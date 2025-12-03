@@ -1,9 +1,8 @@
 import React from "react";
-import { Search, ShoppingCart } from "lucide-react";
+import { Search, } from "lucide-react";
 import Link from "next/link";
-import { GiCaterpillar } from "react-icons/gi";
+import { HomeIcon } from "lucide-react";
 import { FaCartShopping } from "react-icons/fa6";
-import { BiSolidCategory } from "react-icons/bi";
 const Header = () => {
   return (
     <>
@@ -20,8 +19,8 @@ const Header = () => {
           <Link href={"/cart"} className="  ">
             <FaCartShopping size={30} />
           </Link>
-          <Link href={"/category"} className=" text-zinc-600">
-            <BiSolidCategory size={30} />
+          <Link href={"/products"} className=" text-zinc-600">
+            <HomeIcon size={30} />
           </Link>
         </div>
       </header>
