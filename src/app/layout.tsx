@@ -1,6 +1,5 @@
 import "./globals.css";
 import Header from "./components/Header";
-import { CartProvider } from "./contexts/CartContext";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -8,11 +7,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={""}>
-        <CartProvider>
+      <body className={"bg-[#FAF3E1]"}>
+  
           <Header />
           {children}
-        </CartProvider>
+      
       </body>
     </html>
   );
