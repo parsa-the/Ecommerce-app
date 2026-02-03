@@ -2,33 +2,21 @@
 import { Heart, Star } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { BsCartPlus } from "react-icons/bs";
-
+import { useProductStore } from "../store/cartStore";
+import ProductSkeleton from "./Skeleton";
 const AllProducts = () => {
-  const [products, setProducts] = useState<any[]>([]);
-
+  const { products, isLoading, fetchProducts } = useProductStore();
+  
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const res = await fetch("https://fakestoreapi.com/products");
-        const json = await res.json();
-        setProducts(json);
-      } catch (err) {
-        console.error(err);
-      }
-    };
     fetchProducts();
-  }, []);
+  }, [fetchProducts]);
 
-  return (
+
+
+  return isLoading ? (
+    <ProductSkeleton/>
+  ) : (
     <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {/* 
-        Why this works:
-        1. grid - Creates a CSS Grid container
-        2. grid-cols-* - Responsive columns
-        3. All cards in the same row will automatically be equal height
-      */}
-
       {products.map((item) => (
         <div
           key={item.id}
